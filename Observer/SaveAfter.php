@@ -1,24 +1,21 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Observer;
+namespace Itonomy\AdminActivity\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
-use \KiwiCommerce\AdminActivity\Helper\Data as Helper;
+use \Itonomy\AdminActivity\Helper\Data as Helper;
 
 /**
  * Class SaveAfter
- * @package KiwiCommerce\AdminActivity\Observer
+ * @package Itonomy\AdminActivity\Observer
  */
 class SaveAfter implements ObserverInterface
 {
@@ -33,7 +30,7 @@ class SaveAfter implements ObserverInterface
     const SYSTEM_CONFIG = 'adminhtml_system_config_save';
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Model\Processor
+     * @var \Itonomy\AdminActivity\Model\Processor
      */
     private $processor;
 
@@ -43,20 +40,20 @@ class SaveAfter implements ObserverInterface
     public $helper;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Benchmark
+     * @var \Itonomy\AdminActivity\Helper\Benchmark
      */
     public $benchmark;
 
     /**
      * SaveAfter constructor.
-     * @param \KiwiCommerce\AdminActivity\Model\Processor $processor
+     * @param \Itonomy\AdminActivity\Model\Processor $processor
      * @param Helper $helper
-     * @param \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+     * @param \Itonomy\AdminActivity\Helper\Benchmark $benchmark
      */
     public function __construct(
-        \KiwiCommerce\AdminActivity\Model\Processor $processor,
+        \Itonomy\AdminActivity\Model\Processor $processor,
         Helper $helper,
-        \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+        \Itonomy\AdminActivity\Helper\Benchmark $benchmark
     ) {
         $this->processor = $processor;
         $this->helper = $helper;

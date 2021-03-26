@@ -1,24 +1,21 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Model;
+namespace Itonomy\AdminActivity\Model;
 
-use KiwiCommerce\AdminActivity\Api\ActivityRepositoryInterface;
-use \KiwiCommerce\AdminActivity\Helper\Data as Helper;
+use Itonomy\AdminActivity\Api\ActivityRepositoryInterface;
+use \Itonomy\AdminActivity\Helper\Data as Helper;
 
 /**
  * Class Processor
- * @package KiwiCommerce\AdminActivity\Model
+ * @package Itonomy\AdminActivity\Model
  */
 class Processor
 {
@@ -195,12 +192,12 @@ class Processor
      * @param Handler\PostDispatch $postDispatch
      */
     public function __construct(
-        \KiwiCommerce\AdminActivity\Model\Config $config,
+        \Itonomy\AdminActivity\Model\Config $config,
         \Magento\Backend\Model\Auth\Session $authSession,
-        \KiwiCommerce\AdminActivity\Model\Handler $handler,
+        \Itonomy\AdminActivity\Model\Handler $handler,
         \Magento\Framework\HTTP\PhpEnvironment\RemoteAddress $remoteAddress,
-        \KiwiCommerce\AdminActivity\Model\ActivityFactory $activityFactory,
-        \KiwiCommerce\AdminActivity\Model\ActivityLogDetailFactory $activityDetailFactory,
+        \Itonomy\AdminActivity\Model\ActivityFactory $activityFactory,
+        \Itonomy\AdminActivity\Model\ActivityLogDetailFactory $activityDetailFactory,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         ActivityRepositoryInterface $activityRepository,
@@ -208,8 +205,8 @@ class Processor
         \Magento\Framework\Message\ManagerInterface $messageManager,
         \Magento\Framework\App\RequestInterface $request,
         \Magento\Framework\App\Request\Http $httpRequest,
-        \KiwiCommerce\AdminActivity\Model\Activity\Status $status,
-        \KiwiCommerce\AdminActivity\Model\Handler\PostDispatch $postDispatch
+        \Itonomy\AdminActivity\Model\Activity\Status $status,
+        \Itonomy\AdminActivity\Model\Handler\PostDispatch $postDispatch
     ) {
         $this->config = $config;
         $this->authSession = $authSession;
@@ -256,7 +253,7 @@ class Processor
      */
     public function validate($model)
     {
-        if (\KiwiCommerce\AdminActivity\Helper\Data::isWildCardModel($model)) {
+        if (\Itonomy\AdminActivity\Helper\Data::isWildCardModel($model)) {
             if (!empty($this->activityLogs)) {
                 return false;
             }
@@ -383,9 +380,9 @@ class Processor
     {
         $logDetail = $this->_initActivityDetail($model);
         $this->activityLogs[] = [
-            \KiwiCommerce\AdminActivity\Model\Activity::class => $activity,
-            \KiwiCommerce\AdminActivity\Model\ActivityLog::class => $logData,
-            \KiwiCommerce\AdminActivity\Model\ActivityLogDetail::class => $logDetail
+            \Itonomy\AdminActivity\Model\Activity::class => $activity,
+            \Itonomy\AdminActivity\Model\ActivityLog::class => $logData,
+            \Itonomy\AdminActivity\Model\ActivityLogDetail::class => $logDetail
         ];
     }
 
@@ -398,12 +395,12 @@ class Processor
         try {
             if (!empty($this->activityLogs)) {
                 foreach ($this->activityLogs as $model) {
-                    $activity = $model[\KiwiCommerce\AdminActivity\Model\Activity::class];
+                    $activity = $model[\Itonomy\AdminActivity\Model\Activity::class];
                     $activity->save();
                     $activityId = $activity->getId();
 
-                    if (isset($model[\KiwiCommerce\AdminActivity\Model\ActivityLog::class])) {
-                        $logData = $model[\KiwiCommerce\AdminActivity\Model\ActivityLog::class];
+                    if (isset($model[\Itonomy\AdminActivity\Model\ActivityLog::class])) {
+                        $logData = $model[\Itonomy\AdminActivity\Model\ActivityLog::class];
                         if ($logData) {
                             foreach ($logData as $log) {
                                 $log->setActivityId($activityId);
@@ -412,8 +409,8 @@ class Processor
                         }
                     }
 
-                    if (isset($model[\KiwiCommerce\AdminActivity\Model\ActivityLogDetail::class])) {
-                        $detail = $model[\KiwiCommerce\AdminActivity\Model\ActivityLogDetail::class];
+                    if (isset($model[\Itonomy\AdminActivity\Model\ActivityLogDetail::class])) {
+                        $detail = $model[\Itonomy\AdminActivity\Model\ActivityLogDetail::class];
                         $detail->setActivityId($activityId);
                         $detail->save();
                     }

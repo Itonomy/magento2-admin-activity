@@ -1,21 +1,18 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Test\Unit\Helper;
+namespace Itonomy\AdminActivity\Test\Unit\Helper;
 
 /**
  * Class TrackFieldTest
- * @package KiwiCommerce\AdminActivity\Test\Unit\Helper
+ * @package Itonomy\AdminActivity\Test\Unit\Helper
  */
 class TrackFieldTest extends \PHPUnit\Framework\TestCase
 {
@@ -38,15 +35,15 @@ class TrackFieldTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $systemConfig = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Model\Activity\SystemConfig::class)
+        $systemConfig = $this->getMockBuilder(\Itonomy\AdminActivity\Model\Activity\SystemConfig::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $themeConfig = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Model\Activity\ThemeConfig::class)
+        $themeConfig = $this->getMockBuilder(\Itonomy\AdminActivity\Model\Activity\ThemeConfig::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->helper = new \KiwiCommerce\AdminActivity\Helper\TrackField(
+        $this->helper = new \Itonomy\AdminActivity\Helper\TrackField(
             $context,
             $systemConfig,
             $themeConfig

@@ -1,30 +1,28 @@
 <?xml version="1.0"?>
 <!--
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="kiwicommerce" translate="label" sortOrder="9999">
-            <label><![CDATA[KiwiCommerce Extensions]]></label>
+        <tab id="itonomy" translate="label" sortOrder="9999">
+            <label>Itonomy></label>
         </tab>
         <section id="admin_activity" translate="label" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
             <class>separator-top</class>
             <label>Admin Activity</label>
-            <tab>kiwicommerce</tab>
-            <resource>KiwiCommerce_AdminActivity::activityConfig</resource>
+            <tab>itonomy</tab>
+            <resource>Itonomy_AdminActivity::activityConfig</resource>
             <group id="hint" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
-                <frontend_model>KiwiCommerce\AdminActivity\Block\Adminhtml\System\Config\Fieldset\Hint</frontend_model>
+                <frontend_model>Itonomy\AdminActivity\Block\Adminhtml\System\Config\Fieldset\Hint</frontend_model>
             </group>
             <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>General Configuration</label>
@@ -101,6 +99,13 @@
                 </field>
                 <field id="seo" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>SEO</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="developer" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Developer Configurations</label>
+                <field id="debugging" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Debugging enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>

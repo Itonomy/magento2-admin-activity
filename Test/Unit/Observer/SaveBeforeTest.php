@@ -1,17 +1,14 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Test\Unit\Observer;
+namespace Itonomy\AdminActivity\Test\Unit\Observer;
 
 class SaveBeforeTest extends \PHPUnit\Framework\TestCase
 {
@@ -35,15 +32,15 @@ class SaveBeforeTest extends \PHPUnit\Framework\TestCase
      */
     public function setUp()
     {
-        $this->processorMock = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Model\Processor::class)
+        $this->processorMock = $this->getMockBuilder(\Itonomy\AdminActivity\Model\Processor::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->helperMock = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Helper\Data::class)
+        $this->helperMock = $this->getMockBuilder(\Itonomy\AdminActivity\Helper\Data::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->activityRepositoryMock = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Api\ActivityRepositoryInterface::class)
+        $this->activityRepositoryMock = $this->getMockBuilder(\Itonomy\AdminActivity\Api\ActivityRepositoryInterface::class)
             ->getMock();
 
         $this->observerMock = $this
@@ -72,7 +69,7 @@ class SaveBeforeTest extends \PHPUnit\Framework\TestCase
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
 
         $this->saveBefore = $objectManager->getObject(
-            \KiwiCommerce\AdminActivity\Observer\SaveBefore::class,
+            \Itonomy\AdminActivity\Observer\SaveBefore::class,
             [
                 'processor' => $this->processorMock,
                 'helper' => $this->helperMock,

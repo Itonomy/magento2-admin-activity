@@ -1,8 +1,8 @@
 {
-    "name": "kiwicommerce/module-admin-activity",
-    "description": "The Admin Activity extension makes it easy to track all admin activity and revert the modification.",
+    "name": "itonomy/module-admin-activity",
+    "description": "A continuation of The Admin Activity extension by KiwiCommerce. This extension makes it easy to track all admin activity and revert the modification.",
     "type": "magento2-module",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "license": [
         "OSL-3.0"
     ],
@@ -12,7 +12,13 @@
             "name": "Kiwi Commerce Ltd",
             "email": "hello@kiwicommerce.co.uk",
             "homepage": "https://kiwicommerce.co.uk/",
-            "role": "Leader"
+            "role": "Original Author"
+        },
+        {
+            "name": "Robin Rijkeboer @ Itonomy B.V.",
+            "email": "robin.rijkeboer@itonomy.nl",
+            "homepage": "https://www.itonomy.nl",
+            "role": "Technical Lead"
         }
     ],
     "require": {
@@ -32,7 +38,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "KiwiCommerce\\AdminActivity\\": ""
+            "Itonomy\\AdminActivity\\": ""
         }
     }
 }

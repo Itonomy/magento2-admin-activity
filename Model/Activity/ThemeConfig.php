@@ -1,23 +1,20 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Model\Activity;
+namespace Itonomy\AdminActivity\Model\Activity;
 
 /**
  * Class ThemeConfig
- * @package KiwiCommerce\AdminActivity\Model\Activity
+ * @package Itonomy\AdminActivity\Model\Activity
  */
-class ThemeConfig implements \KiwiCommerce\AdminActivity\Api\Activity\ModelInterface
+class ThemeConfig implements \Itonomy\AdminActivity\Api\Activity\ModelInterface
 {
     /**
      * @var \Magento\Framework\DataObject

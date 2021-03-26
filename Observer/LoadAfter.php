@@ -1,51 +1,48 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Observer;
+namespace Itonomy\AdminActivity\Observer;
 
 use Magento\Framework\Event\ObserverInterface;
 
 /**
  * Class LoadAfter
- * @package KiwiCommerce\AdminActivity\Observer
+ * @package Itonomy\AdminActivity\Observer
  */
 class LoadAfter implements ObserverInterface
 {
     /**
-     * @var \KiwiCommerce\AdminActivity\Model\Processor
+     * @var \Itonomy\AdminActivity\Model\Processor
      */
     private $processor;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Data
+     * @var \Itonomy\AdminActivity\Helper\Data
      */
     public $helper;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Benchmark
+     * @var \Itonomy\AdminActivity\Helper\Benchmark
      */
     public $benchmark;
 
     /**
      * LoadAfter constructor.
-     * @param \KiwiCommerce\AdminActivity\Model\Processor $processor
-     * @param \KiwiCommerce\AdminActivity\Helper\Data $helper
-     * @param \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+     * @param \Itonomy\AdminActivity\Model\Processor $processor
+     * @param \Itonomy\AdminActivity\Helper\Data $helper
+     * @param \Itonomy\AdminActivity\Helper\Benchmark $benchmark
      */
     public function __construct(
-        \KiwiCommerce\AdminActivity\Model\Processor $processor,
-        \KiwiCommerce\AdminActivity\Helper\Data $helper,
-        \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+        \Itonomy\AdminActivity\Model\Processor $processor,
+        \Itonomy\AdminActivity\Helper\Data $helper,
+        \Itonomy\AdminActivity\Helper\Benchmark $benchmark
     ) {
         $this->processor = $processor;
         $this->helper = $helper;

@@ -1,23 +1,20 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customise this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Helper;
+namespace Itonomy\AdminActivity\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 
 /**
  * Class Benchmark
- * @package KiwiCommerce\AdminActivity\Helper
+ * @package Itonomy\AdminActivity\Helper
  */
 class Benchmark extends AbstractHelper
 {
@@ -28,7 +25,7 @@ class Benchmark extends AbstractHelper
     const BENCHMARK_ENABLE = 1;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Logger\Logger
+     * @var \Itonomy\AdminActivity\Logger\Logger
      */
     public $logger;
 
@@ -43,14 +40,22 @@ class Benchmark extends AbstractHelper
     public $endTime;
 
     /**
+     * @var Data
+     */
+    private $dataHelper;
+
+    /**
      * Benchmark constructor.
      * @param \Magento\Framework\App\Helper\Context $context
-     * @param \KiwiCommerce\AdminActivity\Logger\Logger $logger
+     * @param \Itonomy\AdminActivity\Logger\Logger $logger
+     * @param \Itonomy\AdminActivity\Helper\Data $dataHelper
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \KiwiCommerce\AdminActivity\Logger\Logger $logger
+        \Itonomy\AdminActivity\Logger\Logger $logger,
+        \Itonomy\AdminActivity\Helper\Data $dataHelper
     ) {
+        $this->dataHelper = $dataHelper;
         $this->logger = $logger;
         parent::__construct($context);
     }
@@ -62,6 +67,9 @@ class Benchmark extends AbstractHelper
      */
     public function start($method)
     {
+        if (!$this->dataHelper->isDebuggingEnabled()) {
+            return;
+        }
         $this->reset($method);
         if (self::BENCHMARK_ENABLE) {
             $this->startTime[$method] = round(microtime(true) * 1000);
@@ -78,6 +86,9 @@ class Benchmark extends AbstractHelper
      */
     public function end($method)
     {
+        if (!$this->dataHelper->isDebuggingEnabled()) {
+            return;
+        }
         if (self::BENCHMARK_ENABLE) {
             $this->endTime[$method] = round(microtime(true) * 1000);
             $difference = $this->endTime[$method] - $this->startTime[$method];

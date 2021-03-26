@@ -1,23 +1,20 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Model\Activity;
+namespace Itonomy\AdminActivity\Model\Activity;
 
 use \Magento\Framework\Model\AbstractModel;
 
 /**
  * Class Status
- * @package KiwiCommerce\AdminActivity\Model\Activity
+ * @package Itonomy\AdminActivity\Model\Activity
  */
 class Status extends AbstractModel
 {
@@ -42,16 +39,16 @@ class Status extends AbstractModel
     const ACTIVITY_FAIL = 3;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Model\ActivityFactory
+     * @var \Itonomy\AdminActivity\Model\ActivityFactory
      */
     public $activityFactory;
 
     /**
      * Status constructor.
-     * @param \KiwiCommerce\AdminActivity\Model\ActivityFactory $activityFactory
+     * @param \Itonomy\AdminActivity\Model\ActivityFactory $activityFactory
      */
     public function __construct(
-        \KiwiCommerce\AdminActivity\Model\ActivityFactory $activityFactory
+        \Itonomy\AdminActivity\Model\ActivityFactory $activityFactory
     ) {
         $this->activityFactory = $activityFactory;
     }
