@@ -52,7 +52,7 @@ class Index extends Action
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Itonomy_AdminActivity::activity');
-        $resultPage->addBreadcrumb(__('KiwiCommerce'), __('Admin Activity'));
+        $resultPage->addBreadcrumb(__('Admin Activity'));
         $resultPage->getConfig()->getTitle()->prepend(__('Admin Activity'));
 
         return $resultPage;

@@ -2,7 +2,7 @@
     "name": "itonomy/module-admin-activity",
     "description": "A continuation of The Admin Activity extension by KiwiCommerce. This extension makes it easy to track all admin activity and revert the modification.",
     "type": "magento2-module",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "license": [
         "OSL-3.0"
     ],
