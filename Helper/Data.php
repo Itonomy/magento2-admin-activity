@@ -109,6 +109,11 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     const MODULE_SEO = 'admin_activity/module/seo';
 
     /**
+     * @var string
+     */
+    const DEVELOPER_DEBUG_ENABLED = 'admin_activity/developer/debugging';
+
+    /**
      * @var \Itonomy\AdminActivity\Model\Config
      */
     public $config;
@@ -238,6 +243,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         if (in_array($model, self::$wildcardModels)) {
             return true;
         }
+        return false;
+    }
+
+    /**
+     * Returns if debugging is enabled in the settings.
+     * @return bool
+     */
+    public function isDebuggingEnabled()
+    {
+        $status = $this->scopeConfig->isSetFlag(self::DEVELOPER_DEBUG_ENABLED, ScopeConfigInterface::SCOPE_TYPE_DEFAULT);
+        if ($status == '1') {
+            return true;
+        }
+
         return false;
     }
 }

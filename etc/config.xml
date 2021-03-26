@@ -36,6 +36,9 @@
                 <admin_user>1</admin_user>
                 <seo>1</seo>
             </module>
+            <developer>
+                <debugging>0</debugging>
+            </developer>
         </admin_activity>
     </default>
 </config>

@@ -40,14 +40,22 @@ class Benchmark extends AbstractHelper
     public $endTime;
 
     /**
+     * @var Data
+     */
+    private $dataHelper;
+
+    /**
      * Benchmark constructor.
      * @param \Magento\Framework\App\Helper\Context $context
      * @param \Itonomy\AdminActivity\Logger\Logger $logger
+     * @param \Itonomy\AdminActivity\Helper\Data $dataHelper
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Itonomy\AdminActivity\Logger\Logger $logger
+        \Itonomy\AdminActivity\Logger\Logger $logger,
+        \Itonomy\AdminActivity\Helper\Data $dataHelper
     ) {
+        $this->dataHelper = $dataHelper;
         $this->logger = $logger;
         parent::__construct($context);
     }
@@ -59,6 +67,9 @@ class Benchmark extends AbstractHelper
      */
     public function start($method)
     {
+        if (!$this->dataHelper->isDebuggingEnabled()) {
+            return;
+        }
         $this->reset($method);
         if (self::BENCHMARK_ENABLE) {
             $this->startTime[$method] = round(microtime(true) * 1000);
@@ -75,6 +86,9 @@ class Benchmark extends AbstractHelper
      */
     public function end($method)
     {
+        if (!$this->dataHelper->isDebuggingEnabled()) {
+            return;
+        }
         if (self::BENCHMARK_ENABLE) {
             $this->endTime[$method] = round(microtime(true) * 1000);
             $difference = $this->endTime[$method] - $this->startTime[$method];
