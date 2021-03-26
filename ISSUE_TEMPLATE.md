@@ -1,7 +1,5 @@
 <!---
     To maintain an effective issue workflow and make sure issues will be solved in a timely manner we kindly ask reporters to follow some guidelines.
-
-    Please have a look at our guidelines article before adding a new issue https://kiwicommerce.co.uk/docs/issue_reporting_guidelines/
 -->
 ### Title
 <!--

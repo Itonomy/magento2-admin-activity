@@ -1,21 +1,18 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Test\Unit\Plugin;
+namespace Itonomy\AdminActivity\Test\Unit\Plugin;
 
 /**
  * Class AuthTest
- * @package KiwiCommerce\AdminActivity\Test\Unit\Plugin
+ * @package Itonomy\AdminActivity\Test\Unit\Plugin
  */
 class AuthTest extends \PHPUnit\Framework\TestCase
 {
@@ -51,11 +48,11 @@ class AuthTest extends \PHPUnit\Framework\TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->helperMock = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Helper\Data::class)
+        $this->helperMock = $this->getMockBuilder(\Itonomy\AdminActivity\Helper\Data::class)
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->loginRepositoryMock = $this->getMockBuilder(\KiwiCommerce\AdminActivity\Api\LoginRepositoryInterface
+        $this->loginRepositoryMock = $this->getMockBuilder(\Itonomy\AdminActivity\Api\LoginRepositoryInterface
         ::class)
             ->setMethods(['setUser','addLog','getListBeforeDate'])
             ->disableOriginalConstructor()
@@ -69,7 +66,7 @@ class AuthTest extends \PHPUnit\Framework\TestCase
         $objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
 
         $this->authTest = $objectManager->getObject(
-            \KiwiCommerce\AdminActivity\Plugin\Auth::class,
+            \Itonomy\AdminActivity\Plugin\Auth::class,
             [
                 'helper' => $this->helperMock,
                 'loginRepository' => $this->loginRepositoryMock

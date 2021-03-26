@@ -1,24 +1,21 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Controller\Adminhtml\Activity;
+namespace Itonomy\AdminActivity\Controller\Adminhtml\Activity;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\App\Action;
 
 /**
  * Class Log
- * @package KiwiCommerce\AdminActivity\Controller\Adminhtml\Activity
+ * @package Itonomy\AdminActivity\Controller\Adminhtml\Activity
  */
 class Log extends Action
 {
@@ -57,7 +54,7 @@ class Log extends Action
     {
         $content = $this->layoutFactory->create()
             ->createBlock(
-                \KiwiCommerce\AdminActivity\Block\Adminhtml\ActivityLogListing::class
+                \Itonomy\AdminActivity\Block\Adminhtml\ActivityLogListing::class
             );
 
         /** @var \Magento\Framework\Controller\Result\Raw $resultRaw */

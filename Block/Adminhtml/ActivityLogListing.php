@@ -1,25 +1,22 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Block\Adminhtml;
+namespace Itonomy\AdminActivity\Block\Adminhtml;
 
 use Magento\Backend\Block\Template;
-use KiwiCommerce\AdminActivity\Api\ActivityRepositoryInterface;
-use KiwiCommerce\AdminActivity\Helper\Browser;
+use Itonomy\AdminActivity\Api\ActivityRepositoryInterface;
+use Itonomy\AdminActivity\Helper\Browser;
 
 /**
  * Class ActivityLogListing
- * @package KiwiCommerce\AdminActivity\Block\Adminhtml
+ * @package Itonomy\AdminActivity\Block\Adminhtml
  */
 class ActivityLogListing extends Template
 {
@@ -37,7 +34,7 @@ class ActivityLogListing extends Template
      * Path to template file in theme.
      * @var string
      */
-    public $_template = 'KiwiCommerce_AdminActivity::log_listing.phtml';
+    public $_template = 'Itonomy_AdminActivity::log_listing.phtml';
 
     /**
      * ActivityLogListing constructor.

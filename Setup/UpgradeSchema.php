@@ -1,17 +1,14 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Setup;
+namespace Itonomy\AdminActivity\Setup;
 
 use Magento\Framework\Setup\UpgradeSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -19,7 +16,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 
 /**
  * Class UpgradeSchema
- * @package KiwiCommerce\AdminActivity\Setup
+ * @package Itonomy\AdminActivity\Setup
  */
 class UpgradeSchema implements UpgradeSchemaInterface
 {
@@ -32,12 +29,11 @@ class UpgradeSchema implements UpgradeSchemaInterface
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-
+        $connection = $setup->getConnection();
         if (version_compare($context->getVersion(), '0.0.2') < 0) {
             $tableName = $setup->getTable('kiwicommerce_activity');
 
-            //TODO: Check if the table already exists
-            if ($setup->getConnection()->isTableExists($tableName) == true) {
+            if ($connection->isTableExists($tableName) == true) {
                 $columns = [
                     'forwarded_ip' => [
                         'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -48,7 +44,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     ]
                 ];
 
-                $connection = $setup->getConnection();
                 foreach ($columns as $name => $definition) {
                     $connection->addColumn($tableName, $name, $definition);
                 }
@@ -58,8 +53,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
         if (version_compare($context->getVersion(), '0.1.2') < 0) {
             $tableName = $setup->getTable('kiwicommerce_activity');
 
-            //TODO: Check if the table already exists
-            if ($setup->getConnection()->isTableExists($tableName) == true) {
+            if ($connection->isTableExists($tableName) == true) {
                 $columns = [
                     'scope' => [
                         'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -70,7 +64,6 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     ]
                 ];
 
-                $connection = $setup->getConnection();
                 foreach ($columns as $name => $definition) {
                     $connection->addColumn($tableName, $name, $definition);
                 }
@@ -82,7 +75,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
             /**
              * Create table 'kiwicommerce_login_activity'
              */
-            $table = $setup->getConnection()->newTable(
+            $table = $connection->newTable(
                 $setup->getTable('kiwicommerce_login_activity')
             )->addColumn(
                 'entity_id',
@@ -147,14 +140,12 @@ class UpgradeSchema implements UpgradeSchemaInterface
             )->setComment(
                 'Log all login/logout activity of admin user'
             );
-            $setup->getConnection()->createTable($table);
+            $connection->createTable($table);
         }
 
         if (version_compare($context->getVersion(), '0.1.4') < 0) {
             $tableName = $setup->getTable('kiwicommerce_login_activity');
-            $connection = $setup->getConnection();
 
-            //TODO: Check if the table already exists
             if ($connection->isTableExists($tableName) == true) {
                 $connection->addColumn($tableName, 'remarks', [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -172,22 +163,19 @@ class UpgradeSchema implements UpgradeSchemaInterface
         if (version_compare($context->getVersion(), '0.1.5') < 0) {
             $tableName = $setup->getTable('kiwicommerce_activity_log');
 
-            //TODO: Check if the table already exists
-            if ($setup->getConnection()->isTableExists($tableName) == true) {
+            if ($connection->isTableExists($tableName) == true) {
                 $definition = [
                         'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                         'length' => 255
                 ];
 
-                $setup->getConnection()->addColumn($tableName, 'field_name', $definition);
+                $connection->addColumn($tableName, 'field_name', $definition);
             }
         }
 
         if (version_compare($context->getVersion(), '0.1.6') < 0) {
             $tableName = $setup->getTable('kiwicommerce_activity');
-            $connection = $setup->getConnection();
 
-            //TODO: Check if the table already exists
             if ($connection->isTableExists($tableName) == true) {
                 $connection->addColumn($tableName, 'fullaction', [
                     'type' => \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -198,6 +186,28 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'after' => 'module'
                 ]);
             }
+        }
+
+        if (version_compare($context->getVersion(), '1.0.9') < 0) {
+            // Old Table Names
+            $oldActivity = $setup->getTable('kiwicommerce_activity');
+            $oldActivityLog = $setup->getTable('kiwicommerce_activity_log');
+            $oldActivityDetail = $setup->getTable('kiwicommerce_activity_detail');
+            $oldLoginActivity = $setup->getTable('kiwicommerce_login_activity');
+
+            // New Table Names
+            $newActivity = $setup->getTable('admin_activity');
+            $newActivityLog = $setup->getTable('admin_activity_log');
+            $newActivityDetail = $setup->getTable('admin_activity_detail');
+            $newLoginActivity = $setup->getTable('admin_activity_login_log');
+
+            // Rename All Tables
+            $connection->renameTablesBatch([
+               $oldActivity => $newActivity,
+               $oldActivityLog => $newActivityLog,
+               $oldActivityDetail => $newActivityDetail,
+               $oldLoginActivity => $newLoginActivity
+            ]);
         }
 
         $setup->endSetup();

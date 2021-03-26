@@ -1,25 +1,22 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Cron;
+namespace Itonomy\AdminActivity\Cron;
 
 use Psr\Log\LoggerInterface;
-use KiwiCommerce\AdminActivity\Helper\Data as Helper;
-use KiwiCommerce\AdminActivity\Api\ActivityRepositoryInterface;
+use Itonomy\AdminActivity\Helper\Data as Helper;
+use Itonomy\AdminActivity\Api\ActivityRepositoryInterface;
 
 /**
  * Class ClearLog
- * @package KiwiCommerce\AdminActivity\Cron
+ * @package Itonomy\AdminActivity\Cron
  */
 class ClearLog
 {
@@ -40,7 +37,7 @@ class ClearLog
     public $dateTime;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Data
+     * @var \Itonomy\AdminActivity\Helper\Data
      */
     public $helper;
 
@@ -50,7 +47,7 @@ class ClearLog
     public $activityRepository;
 
     /**
-     * @var \KiwiCommerce\AdminActivity\Api\LoginRepositoryInterface
+     * @var \Itonomy\AdminActivity\Api\LoginRepositoryInterface
      */
     public $loginRepository;
 
@@ -60,14 +57,14 @@ class ClearLog
      * @param \Magento\Framework\Stdlib\DateTime\DateTime $dateTime
      * @param Helper $helper
      * @param ActivityRepositoryInterface $activityRepository
-     * @param \KiwiCommerce\AdminActivity\Api\LoginRepositoryInterface $loginRepository
+     * @param \Itonomy\AdminActivity\Api\LoginRepositoryInterface $loginRepository
      */
     public function __construct(
         LoggerInterface $logger,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         Helper $helper,
         ActivityRepositoryInterface $activityRepository,
-        \KiwiCommerce\AdminActivity\Api\LoginRepositoryInterface $loginRepository
+        \Itonomy\AdminActivity\Api\LoginRepositoryInterface $loginRepository
     ) {
         $this->logger = $logger;
         $this->dateTime = $dateTime;

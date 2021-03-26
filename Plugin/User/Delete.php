@@ -1,35 +1,32 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Plugin\User;
+namespace Itonomy\AdminActivity\Plugin\User;
 
 /**
  * Class Delete
- * @package KiwiCommerce\AdminActivity\Plugin\User
+ * @package Itonomy\AdminActivity\Plugin\User
  */
 class Delete
 {
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Benchmark
+     * @var \Itonomy\AdminActivity\Helper\Benchmark
      */
     public $benchmark;
 
     /**
      * Delete constructor.
-     * @param \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+     * @param \Itonomy\AdminActivity\Helper\Benchmark $benchmark
      */
     public function __construct(
-        \KiwiCommerce\AdminActivity\Helper\Benchmark $benchmark
+        \Itonomy\AdminActivity\Helper\Benchmark $benchmark
     ) {
         $this->benchmark = $benchmark;
     }

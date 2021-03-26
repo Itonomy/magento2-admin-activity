@@ -1,17 +1,14 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Controller\Adminhtml\Login;
+namespace Itonomy\AdminActivity\Controller\Adminhtml\Login;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
@@ -19,14 +16,14 @@ use Magento\Backend\App\Action;
 
 /**
  * Class Index
- * @package KiwiCommerce\AdminActivity\Controller\Adminhtml\Login
+ * @package Itonomy\AdminActivity\Controller\Adminhtml\Login
  */
 class Index extends Action
 {
     /**
      * @var string
      */
-    const ADMIN_RESOURCE = 'KiwiCommerce_AdminActivity::login_activity';
+    const ADMIN_RESOURCE = 'Itonomy_AdminActivity::login_activity';
 
     /**
      * @var PageFactory
@@ -54,7 +51,7 @@ class Index extends Action
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('KiwiCommerce_AdminActivity::login_activity');
+        $resultPage->setActiveMenu('Itonomy_AdminActivity::login_activity');
         $resultPage->addBreadcrumb(__('KiwiCommerce'), __('Login Activity'));
         $resultPage->getConfig()->getTitle()->prepend(__('Login Activity'));
 

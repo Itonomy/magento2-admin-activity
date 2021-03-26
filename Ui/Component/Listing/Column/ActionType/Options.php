@@ -1,34 +1,31 @@
 <?php
 /**
- * KiwiCommerce
- *
  * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
  * If you wish to customize this module for your needs.
- * Please contact us https://kiwicommerce.co.uk/contacts.
  *
- * @category   KiwiCommerce
- * @package    KiwiCommerce_AdminActivity
+ * @package    Itonomy_AdminActivity
  * @copyright  Copyright (C) 2018 Kiwi Commerce Ltd (https://kiwicommerce.co.uk/)
- * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ * @copyright  Copyright (C) 2021 Itonomy B.V. (https://www.itonomy.nl)
+ * @license    https://opensource.org/licenses/OSL-3.0
  */
-namespace KiwiCommerce\AdminActivity\Ui\Component\Listing\Column\ActionType;
+namespace Itonomy\AdminActivity\Ui\Component\Listing\Column\ActionType;
 
 /**
  * Class Options
- * @package KiwiCommerce\AdminActivity\Ui\Component\Listing\Column\ActionType
+ * @package Itonomy\AdminActivity\Ui\Component\Listing\Column\ActionType
  */
 class Options implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * @var \KiwiCommerce\AdminActivity\Helper\Data
+     * @var \Itonomy\AdminActivity\Helper\Data
      */
     public $helper;
 
     /**
      * Options constructor.
-     * @param \KiwiCommerce\AdminActivity\Helper\Data $helper
+     * @param \Itonomy\AdminActivity\Helper\Data $helper
      */
-    public function __construct(\KiwiCommerce\AdminActivity\Helper\Data $helper)
+    public function __construct(\Itonomy\AdminActivity\Helper\Data $helper)
     {
         $this->helper = $helper;
     }
