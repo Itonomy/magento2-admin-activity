@@ -118,7 +118,6 @@
                 jQuery.each(jQuery('textarea.value-container'), function() {
                     var offset = this.offsetHeight - this.clientHeight;
                     var resizeTextarea = function(el) {
-                        console.log('You clicked me!!');
                         jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
                     };
                     jQuery(this).unbind().on('click', function() { resizeTextarea(this); }).trigger('click');
